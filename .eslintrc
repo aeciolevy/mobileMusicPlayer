@@ -1,0 +1,20 @@
+{
+    "extends": "react-app",
+    "rules": {
+        "indent": ["error", 4],
+        "class-methods-use-this": 0,
+        "consistent-return": 0,
+        "jsx-a11y/href-no-hash": "off",
+        "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
+        "no-underscore-dangle": ["error", { "allow": ["_id", "_self"] }],
+        "jsx-quotes": ["error", "prefer-double"],
+        "semi": "error",
+        "comma-dangle": ["error", {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "never",
+            "exports": "never",
+            "functions": "always-multiline"}],
+        "comma-style": "error"
+    }
+}
