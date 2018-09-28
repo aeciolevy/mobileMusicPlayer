@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Home from './Home';
+import Home from './pages/Home';
 import './App.css';
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#383838',
+            main: '#272727',
         },
         secondary: {
             main: '#ff3d00',
