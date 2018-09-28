@@ -12,7 +12,9 @@ import { TableStyled } from '../styled/MainHomeStyled';
 const styles = theme => ({
     root: {
         width: '100%',
+        height: 'inherit',
         overflowX: 'auto',
+        overflowY: 'auto',
         backgroundColor: '#212121',
         boxShadow: 'unset',
     },
