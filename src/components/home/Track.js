@@ -4,8 +4,8 @@ import { Typography } from '@material-ui/core';
 
 const Track = () => (
     <TrackStyled> 
-        <Typography variant="headline" style={{ color: 'white'}}> Track Title </Typography>
-        <Typography variant="subheading" style={{ color: 'white' }}> Artist </Typography>
+        <Typography variant="headline" align="center" style={{ color: 'white'}}> Track Title </Typography>
+        <Typography variant="subheading" align="center" style={{ color: 'white' }}> Artist </Typography>
     </TrackStyled>
 );
 
