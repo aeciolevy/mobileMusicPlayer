@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Home from './pages/Home';
 import './App.css';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#272727',
+        },
+        secondary: {
+            main: '#ff3d00',
+        },
+    },
+});
+
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-            </div>
+            <MuiThemeProvider theme={theme}>
+                <Home />
+            </MuiThemeProvider>
         );
     }
 }
