@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ResponsiveDrawer from '../components/home/ResponsiveDrawer';
 import styled from 'styled-components';

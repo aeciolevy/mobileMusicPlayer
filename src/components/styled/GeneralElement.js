@@ -5,6 +5,7 @@ const footerColor = '#333333';
 export const Footer = styled.footer`
     background-color: ${footerColor};
     bottom: 0;
+    display: flex;
     height: 7rem;
     position: fixed;
     width: 100%;

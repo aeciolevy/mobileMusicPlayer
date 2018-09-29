@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import { TableCellResponsive } from '../styled/MainHomeStyled';
 import { withStyles } from '@material-ui/core';
+import PlayCircleFilled from '@material-ui/icons/PlayCircleFilled';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 
 const styles = theme => ({
     cell: {
@@ -19,12 +20,14 @@ const PlaylistTableBody = ({ rows, classes }) => (
         {rows.map(row => {
             return (
                 <TableRow key={row.id}>
+                    <TableCell> <PlayCircleFilled /> </TableCell>
+                    <TableCell className={classes.cell}> <FavoriteBorder /> </TableCell>
                     <TableCell component="th" scope="row">
                         {row.name}
                     </TableCell>
                     <TableCell className={classes.cell}>{row.calories}</TableCell>
                     <TableCell className={classes.cell}>{row.fat}</TableCell>
-                    <TableCell numeric>{row.carbs}</TableCell>
+                    <TableCell className={classes.cell} numeric>{row.carbs}</TableCell>
                 </TableRow>
             );
         })}
