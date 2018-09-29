@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Table from '@material-ui/core/Table';
+import { TableCell } from '@material-ui/core';
 
 export const MainHomeContainer = styled.div`
     -webkit-mask-image: linear-gradient(to top, transparent 39%, black 92%);
@@ -28,9 +29,21 @@ export const SongListContainer = styled.div`
     }
 `;
 
-
 export const TableStyled = styled(Table)`
     table, tbody, th, td {
         color: white;
+    }
+
+    @media (max-width: 960px) {
+        th, td {
+            display: ${({ responsive}) => responsive ? 'none' : null}
+        }
+    }
+        
+`;
+
+export const TableCellResponsive = styled(TableCell)`
+    @media (max-width: 960px) {
+        clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);
     }
 `;
