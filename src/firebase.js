@@ -10,6 +10,6 @@ var config = {
 };
 
 var fire = firebase.initializeApp(config);
-const databaseRef = fire.database().ref();
+const databaseRef = fire.firestore();
 
-export const songs = databaseRef.child('songs');
+export const songs = databaseRef.collection('songs');
