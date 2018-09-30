@@ -21,11 +21,7 @@ class SongProgress extends Component {
         const { currentTrack } = this.props;
         const progress = currentTrack.instance.getProgress();
         this.setState({ progress });
-        const frameId = requestAnimationFrame(this.updateProgress.bind(this));
-    }
-
-    getSnapshotBeforeUpdate(prevProps) {
-        return null;
+        requestAnimationFrame(this.updateProgress.bind(this));
     }
 
     componentDidUpdate(prevProps) {
