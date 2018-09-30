@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { addSongToStore, playSong } from  './actions';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Home from './pages/Home';
-import MediaPlayer from './mediaPlayer';
 import './App.css';
-import {Howl} from 'howler';
+
 
 const theme = createMuiTheme({
     palette: {

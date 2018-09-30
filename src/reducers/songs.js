@@ -58,6 +58,7 @@ export default combineReducers({
 
 export const getSongs = state => state.songs;
 export const getCurrentTrack = state => state.currentTrack;
+export const getIsPlaying = state => state.currentTrack.ref ? state.currentTrack.ref.playing() : false;
 export const getNextTrack = state => state.nextTrack;
-export const getSelectedTrack = state => state.selectedTrack.title;
+export const getSelectedTrack = state => state.selectedTrack;
 export const getSelectedTrackTitle = state => state.selectedTrack.title;

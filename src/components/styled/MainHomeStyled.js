@@ -32,7 +32,10 @@ export const SongListContainer = styled.div`
 export const TableStyled = styled(Table)`
     table, tbody, th, td {
         color: white;
-    }   
+    }
+    &:hover td {
+        cursor: pointer;
+    }    
 `;
 
 export const TableCellResponsive = styled(TableCell)`

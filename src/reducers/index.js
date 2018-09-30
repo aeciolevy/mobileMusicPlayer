@@ -9,6 +9,7 @@ export default combineReducers({
 
 // SONGS SELECTORS
 export const getSongsSelector = state => fromSongs.getSongs(state.mediaPlay);
+export const getIsPlayingSelector = state => fromSongs.getIsPlaying(state.mediaPlay);
 export const getCurrentTrackSelector = state => fromSongs.getCurrentTrack(state.mediaPlay);
 export const getNextTrackSelector = state => fromSongs.getNextTrack(state.mediaPlay);
 export const getSelectedTrackSelector = state => fromSongs.getSelectedTrack(state.mediaPlay);

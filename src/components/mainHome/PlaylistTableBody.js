@@ -33,15 +33,16 @@ class PlaylistTableBody extends Component {
     }
 
     render() {
-        const { rows, classes, selected, currentTrack } = this.props; 
-        console.log(currentTrack)
+        const { rows, classes, currentTrack } = this.props; 
+        
         return(
             <TableBody>
                 {rows.map(row => {
                     const active = currentTrack && currentTrack.title === row.title; 
                     return (
                         <TableRow key={row.title} onClick={() => this.handleSelected(row)}>
-                            <TableCell onClick={(event) => this.handlePlay(event, row)} style={{ color: active ? highlightColor : 'white' }}> 
+                            <TableCell onClick={(event) => this.handlePlay(event, row)} 
+                                style={{ color: active ? highlightColor : 'white' }}> 
                                 <PlayCircleFilled /> 
                             </TableCell>
                             <TableCell className={classes.cell} style={{ color: active ? highlightColor : 'white' }}> 

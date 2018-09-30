@@ -22,7 +22,7 @@ class MediaPlayer {
     }
 
     getProgress() {
-        return Math.floor(this.song.seek() / this.song.duration());
+        return (this.song.seek() / this.song.duration()) * 100;
     }
 }
 
