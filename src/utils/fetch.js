@@ -1,7 +1,8 @@
 export async function get(url) {
     const response = await fetch(url, {
-        credentials: "include",
+        // credentials: "include",
     });
+    
     if (!response.ok) {
         try {
             const data = await response.json();
@@ -12,6 +13,9 @@ export async function get(url) {
                 message: response.statusText,
             }, null];
         }
+    }
+    if (response.body instanceof ReadableStream) {
+        return [null, response.body];
     }
     const data = await response.json();
 

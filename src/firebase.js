@@ -11,5 +11,8 @@ var config = {
 
 var fire = firebase.initializeApp(config);
 const databaseRef = fire.firestore();
+const settings = {/* your settings... */ timestampsInSnapshots: true };
+databaseRef.settings(settings);
+
 
 export const songs = databaseRef.collection('songs');

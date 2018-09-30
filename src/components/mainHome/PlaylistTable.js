@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import { TableStyled } from '../styled/MainHomeStyled';
 import PlaylistTableHeader from './PlaylistTableHeader';
 import PlaylistTableBody from './PlaylistTableBody';
+import PlaylistBodyContainer from './PlaylistBodyContainer';
 
 const styles = theme => ({
     root: {
@@ -38,7 +39,8 @@ const PlaylistTable = (props) => {
         <Paper className={classes.root}>
             <TableStyled >
                 <PlaylistTableHeader />
-                <PlaylistTableBody rows={rows} />
+                <PlaylistBodyContainer />
+                {/* <PlaylistTableBody rows={rows} /> */}
             </TableStyled>
         </Paper>
     );

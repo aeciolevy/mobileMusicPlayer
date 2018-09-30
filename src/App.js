@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addSongToStore, playSong } from  './actions';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Home from './pages/Home';
-import to from './utils/to';
-import { songs } from './firebase';
+import MediaPlayer from './mediaPlayer';
 import './App.css';
+import {Howl} from 'howler';
 
 const theme = createMuiTheme({
     palette: {
@@ -20,10 +22,7 @@ const theme = createMuiTheme({
 class App extends Component {
     
     async componentDidMount () {
-        
-        const [error, response] = await to(songs.get());
-        console.log(error, response);
-        
+        await this.props.addSongToStore();
     }
     
     render() {
@@ -35,4 +34,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(null, {addSongToStore, playSong})(App);

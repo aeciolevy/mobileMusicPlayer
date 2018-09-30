@@ -32,14 +32,7 @@ export const SongListContainer = styled.div`
 export const TableStyled = styled(Table)`
     table, tbody, th, td {
         color: white;
-    }
-
-    @media (max-width: 960px) {
-        th, td {
-            display: ${({ responsive}) => responsive ? 'none' : null}
-        }
-    }
-        
+    }   
 `;
 
 export const TableCellResponsive = styled(TableCell)`

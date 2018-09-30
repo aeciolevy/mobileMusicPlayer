@@ -20,7 +20,6 @@ const PlaylistTableHeader = ({classes}) => (
             <TableCell className={classes.cell}>  </TableCell>
             <TableCell> Title </TableCell>
             <TableCell className={classes.cell}> Artist </TableCell>
-            <TableCell className={classes.cell}> Album </TableCell>
             <TableCell className={classes.cell} numeric> <AccessTime /> </TableCell>
         </TableRow>
     </TableHead>
