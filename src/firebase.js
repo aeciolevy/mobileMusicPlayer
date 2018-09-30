@@ -1,11 +1,11 @@
 import firebase from 'firebase';
 
 var config = {
-    apiKey: "AIzaSyBXGweH7UQPWuMQ7xB38TRQMfucoODK1KQ",
-    authDomain: "musicplayer-e6bef.firebaseapp.com",
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_DATABASE_URL,
     databaseURL: "https://musicplayer-e6bef.firebaseio.com",
-    projectId: "musicplayer-e6bef",
-    storageBucket: "musicplayer-e6bef.appspot.com",
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: "779292420974"
 };
 

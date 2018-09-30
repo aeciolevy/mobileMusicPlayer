@@ -23,7 +23,7 @@ class PlaylistTableBody extends Component {
     
     handleSelected = (row, selectable = false) => {
         if (!selectable){
-            this.props.playSong(row);
+            this.props.selectedTrack(row);
         }
     }
 
@@ -34,13 +34,13 @@ class PlaylistTableBody extends Component {
 
     render() {
         const { rows, classes, currentTrack } = this.props; 
-        console.log(currentTrack)
+        
         return(
             <TableBody>
                 {rows.map(row => {
                     const active = currentTrack && currentTrack.title === row.title; 
                     return (
-                        <TableRow key={row.title} onDoubleClick={() => this.handleSelected(row)}>
+                        <TableRow key={row.title} onClick={() => this.handleSelected(row)}>
                             <TableCell onClick={(event) => this.handlePlay(event, row)} 
                                 style={{ color: active ? highlightColor : 'white' }}> 
                                 <PlayCircleFilled /> 

@@ -29,7 +29,7 @@ export const playSong = (song) => async (dispatch, store) => {
     const mediaPlayer = new MediaPlayer();
     mediaPlayer.playSong(song.downloadURL);
     const currentTrack = mediaPlayer.getSongReference();
-    dispatch({ type: types.SET_CURRENT_TRACK, payload: { ref: currentTrack, info: song, id: index }});
+    dispatch({ type: types.SET_CURRENT_TRACK, payload: { instance: mediaPlayer, ref: currentTrack, info: song, id: index }});
 };
 
 export const pauseSong = () => async (dispatch, store) => {
@@ -43,7 +43,10 @@ export const resumeSong = () => async (dispatch, store) => {
 };
 
 export const selectedTrack = (song) => {
-    console.log(song)
     return { type: types.SELECTED_TRACK, payload: song };
 };
 
+export const playFromControl = () => async (dispatch, store) => {
+    const currentPlay = getCurrentTrackSelector(store());
+    
+}
