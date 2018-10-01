@@ -2,10 +2,12 @@ import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
-import { getIsPlayingSelector, getCurrentTrackSelector } from '../../reducers';
+import { getIsPlayingSelector, getCurrentTrackSelector, getNextTrackSelector, getSongsSelector } from '../../reducers';
 import { playSong, pauseSong } from '../../actions';
 
 const playStyle = { fontSize: '3.5rem', color: '#00abfd', cursor: 'pointer' };
+
+const TIME_TO_PLAY_NEXT = 3;
 
 class PlayerContainer extends Component {
     
@@ -14,10 +16,17 @@ class PlayerContainer extends Component {
     frameId = null;
 
     checkIfIsPlaying() {
-        const { currentTrack } = this.props;
-        const isPlaying = currentTrack.ref.playing();
-        this.setState({ isPlaying });
-        requestAnimationFrame(this.checkIfIsPlaying.bind(this));
+        const { songs, currentTrack, nextTrack, playSong } = this.props;
+        if (currentTrack.ref) {
+            const isPlaying = currentTrack.ref.playing();
+            const timeToFinish = currentTrack.ref.duration() - currentTrack.ref.seek();
+            console.log(timeToFinish);
+            if (( timeToFinish < TIME_TO_PLAY_NEXT) && isPlaying){
+                playSong(songs[nextTrack.id]);
+            }
+            this.setState({ isPlaying });
+            requestAnimationFrame(this.checkIfIsPlaying.bind(this));
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -48,6 +57,8 @@ class PlayerContainer extends Component {
 const mapStateToProps = state => ({
     isPlaying: getIsPlayingSelector(state),
     currentTrack: getCurrentTrackSelector(state),
+    nextTrack: getNextTrackSelector(state),
+    songs: getSongsSelector(state),
 });
     
 

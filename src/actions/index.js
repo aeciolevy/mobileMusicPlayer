@@ -19,6 +19,13 @@ export const addSongToStore = () => async dispatch => {
     }
 };
 
+const actionsToPlay = (song, index, dispatch) => {
+    const mediaPlayer = new MediaPlayer();
+    mediaPlayer.playSong(song.downloadURL);
+    const currentTrack = mediaPlayer.getSongReference();
+    dispatch({ type: types.SET_CURRENT_TRACK, payload: { instance: mediaPlayer, ref: currentTrack, info: song, id: index } });
+}
+
 export const playSong = (song, playingSelected = false) => async (dispatch, store) => {
     const currentPlay = getCurrentTrackSelector(store());
     const songs = getSongsSelector(store());
@@ -27,11 +34,13 @@ export const playSong = (song, playingSelected = false) => async (dispatch, stor
     if (currentPlay.ref && !playingSelected) {
         currentPlay.ref.stop();
     }
+    // If playing selected song from playing list
+    // check if there is a selected song first
+    if (playingSelected && !selectedSong.title) {
+        return {};
+    }
     const index = songs.findIndex(el => el.title === songToPlay.title);
-    const mediaPlayer = new MediaPlayer();
-    mediaPlayer.playSong(songToPlay.downloadURL);
-    const currentTrack = mediaPlayer.getSongReference();
-    dispatch({ type: types.SET_CURRENT_TRACK, payload: { instance: mediaPlayer, ref: currentTrack, info: songToPlay, id: index }});
+    actionsToPlay(songToPlay, index, dispatch);
 };
 
 export const pauseSong = () => async (dispatch, store) => {
@@ -48,17 +57,21 @@ export const selectedTrack = (song) => {
     return { type: types.SELECTED_TRACK, payload: song };
 };
 
-export const playFromControl = () => async (dispatch, store) => {
-    const currentPlay = getCurrentTrackSelector(store());
-    const selectedSong = getSelectedTrackSelector(store());
-    const songs = getSongsSelector(store());
-    // if it is selected and is not playing 
-    // play the selected song;
-    if (!currentPlay.ref && selectedSong.title) {
-        const mediaPlayer = new MediaPlayer();
-        mediaPlayer.playSong(selectedSong.downloadURL);
-        const currentTrack = mediaPlayer.getSongReference();
-        const index = songs.findIndex(el => el.title === selectedSong.title);
-        dispatch({ type: types.SET_CURRENT_TRACK, payload: { instance: mediaPlayer, ref: currentTrack, info: selectedSong, id: index } });
+export const skipSong = (isNext = true) => async (dispatch, store) => {
+    const currentTrack = getCurrentTrackSelector(store());
+    const { id } = currentTrack;
+    // just skip if it playing
+    if (!currentTrack.ref) {
+        return {};
     }
+    const songs = getSongsSelector(store());
+    let newId = isNext ? (id + 1) % songs.length : (id - 1) % songs.length;
+    if (newId < 0) {
+        newId = songs.length - 1;
+    }
+    if (currentTrack.ref) {
+        currentTrack.ref.stop();
+    }
+    const skipSong = songs[newId];
+    actionsToPlay(skipSong, newId, dispatch);
 };

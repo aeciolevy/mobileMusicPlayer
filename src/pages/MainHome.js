@@ -1,18 +1,22 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux'
 import { MainHomeContainer, Image } from '../components/styled/MainHomeStyled';
 import SongsList from '../components/mainHome/SongsList';
+import { getCurrentTrackSelector } from '../reducers';
 
-// const Link = 'http://neonlimelight.com/wp-content/uploads/2013/02/jt-2020-album-cover.jpg';
-
-const MainHome = (props) => (
+const MainHome = ({currentTrack}) => (
     <Fragment>
         <MainHomeContainer>
-            <Image  />
+            <Image  imageLink={currentTrack && currentTrack.info ? currentTrack.info.albumURL : null}/>
         </MainHomeContainer>
-            <SongsList />
+        <SongsList />
     </Fragment>
 );
 
-export default MainHome;
+const mapStateToProps = state => ({
+    currentTrack: getCurrentTrackSelector(state),
+});
+
+export default connect(mapStateToProps)(MainHome);
 
 

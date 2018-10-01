@@ -30,7 +30,10 @@ const currentTrack = (state = {}, action) => {
 const nextTrack = (state = {}, action) => {
     switch(action.type) {
     case types.SET_CURRENT_TRACK: {
-        return { ...state, id: action.payload.id };
+        return { ...state, id: (action.payload.id + 1) % state.songsSize };
+    }
+    case types.ADD_SONGS: {
+        return {...state, songsSize: action.payload.length};
     }
     default: 
         return state;
