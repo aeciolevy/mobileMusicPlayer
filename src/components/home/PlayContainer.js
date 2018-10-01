@@ -20,7 +20,6 @@ class PlayerContainer extends Component {
         if (currentTrack.ref) {
             const isPlaying = currentTrack.ref.playing();
             const timeToFinish = currentTrack.ref.duration() - currentTrack.ref.seek();
-            console.log(timeToFinish);
             if (( timeToFinish < TIME_TO_PLAY_NEXT) && isPlaying){
                 playSong(songs[nextTrack.id]);
             }
