@@ -1,0 +1,3 @@
+export const ADD_SONGS = 'ADD_SONGS';
+export const SET_CURRENT_TRACK = 'SET_CURRENT_TRACK';
+export const SELECTED_TRACK = 'SELECTED_TRACK';
